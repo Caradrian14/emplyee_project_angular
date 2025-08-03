@@ -7,3 +7,20 @@ export class LoginModel {
         this.password = '';
     }
 }
+
+export interface APIResponseModel{
+    message: "",
+    result: true,
+    data: any 
+}
+
+export interface EmployeeList {
+    "employeeId":number,
+    "employeeName": string,
+    "deptId": number,
+    "deptName": string,
+    "contactNo": string,
+    "emailId": string,
+    "role": string 
+
+}

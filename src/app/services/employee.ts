@@ -1,13 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { APIResponseModel } from '../model/Employee.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Employee {
+export class employeeService {
   constructor(private http: HttpClient ) {}
 
   onLogin (obj: any) {
     return this.http.post("https://freeapi.miniprojectideas.com/apiEmployeeLeave/Login", obj)
+  }
+
+  getAllEmployees (): Observable<APIResponseModel> {
+    return this.http.get<APIResponseModel>("https://freeapi.minipprojectideas.com/api/EmployeeLeave/GetEmployees")
   }
 }
