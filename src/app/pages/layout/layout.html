@@ -1,1 +1,9 @@
-<p>layout works!</p>
+<div class="sidebar">
+  <h2>ERP Menu</h2>
+  <ul>
+    <li><a routerLink="Dashboard"><i class="icon-dashboard"></i> Dashboard</a></li>
+    <li><a routerLink="Employee"><i class="icon-inventory"></i> Employee</a></li>
+    <li><a (click)="logOff()"><i class="icon-orders"></i> Leave</a></li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
