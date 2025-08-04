@@ -30,6 +30,7 @@ export class EmployeeModel {
     contactNo: string
     emailId: string
     deptId: string
+    deptName: string
     password:string
     gender:string
     role: string 
@@ -37,6 +38,7 @@ export class EmployeeModel {
     constructor() {
         this.contactNo = '';
         this.deptId = '';
+        this.deptName = '';
         this.emailId = '';
         this.employeeId = 0;
         this.gender = '';
