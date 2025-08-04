@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { employeeService } from '../../services/employee';
 
 @Component({
   selector: 'app-leave',
@@ -9,6 +10,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class Leave {
   @ViewChild("newModal") newModal!: ElementRef;
+  employeeService = inject(employeeService)
+
 
   leaveForm: FormGroup = new FormGroup({
     leaveId: new FormControl(0),
@@ -21,4 +24,33 @@ export class Leave {
     isApproved: new FormControl(false),
     approvedData:new FormControl(null), 
   })
+
+  leaveList: any[]=[];
+
+  constructor() {
+    debugger;
+    const loggerData = localStorage.getItem("leaveUSer")
+    if(loggerData != null) {
+      const loggerParseData = JSON.parse(loggerData)
+        this.leaveForm.controls['employeeId'].setValue(loggerParseData.empId)
+    }
+  }
+
+  loadLeaves() {
+    const empId = this.leaveForm.controls['employeeId'].value;
+    this.employeeService.getAllLeaveByEmpId(empId).subscribe({
+      next:(result:any)=> {
+        this.leaveList = result.data;
+      }
+    });
+  }
+
+  onSave() {
+    const formValue = this.leaveForm.value;
+    this.employeeService.onAddLeave(formValue).subscribe({
+      next:()=>{
+
+      }
+    })
+  }
 }
