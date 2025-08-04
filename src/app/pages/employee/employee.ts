@@ -56,4 +56,20 @@ export class Employee implements OnInit{
   onSubmit() {
 
   }
+
+  onSaveEmployee() {
+    this.employeeService.onSaveNewEmployee(this.employeeObj).subscribe({
+      next:(res:any) => {
+        if(res.result){
+          this.getEmployees();
+          alert("Employee created suscesfully")
+        } else {
+          alert(res.message)
+        }
+      },
+      error:()=>{
+
+      }
+    })
+  }
 }

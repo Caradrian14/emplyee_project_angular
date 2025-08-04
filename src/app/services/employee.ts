@@ -26,4 +26,9 @@ export class employeeService {
     return this.http.get("https://freeapi.minipprojectideas.com/api/EmployeeLeave/GetAllRoles").pipe(
       map((res:any) => res.data));
   }
+
+
+  onSaveNewEmployee (obj: any) {
+    return this.http.post("https://freeapi.miniprojectideas.com/apiEmployeeLeave/CreateEmployee", obj)
+  }
 }
