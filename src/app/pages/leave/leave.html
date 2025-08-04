@@ -1,5 +1,6 @@
 <p>leave works!</p>
 <div #newModal>
+    <button (click)="openModal()">add Leave</button>
     <form action="" [formGroup]="leaveForm">
         <select formControlName="leaveType" name="" id="">
             <option value="">Select types</option>
@@ -14,4 +15,23 @@
         <button>Cancel</button>
         <button (click)="onSave()">Submit</button>
     </form>
+</div>
+
+<div>
+    <ul>
+        @for (item of leaveList; track $index) {
+            <li>{{ $index +1}}</li>
+            <li>{{ item.employeeName }}</li>
+            <li>{{ item.leaveType }}</li>
+            <li>{{ item.fromDate | date: 'dd-MM-yyyy' }}</li>
+            <li>{{ item.toDate | date: 'dd-MM-yyyy' }}</li>
+            @if (item.isApproved == null) {
+                <span>pending</span>
+            } @else if (item.isApproved == true) {
+                <span>Approved</span>
+            } @else if (item.isApproved == false) {
+                <span>reject</span>
+            }
+        }
+    </ul>
 </div>

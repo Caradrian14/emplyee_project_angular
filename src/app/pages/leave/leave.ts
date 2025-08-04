@@ -1,14 +1,17 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { employeeService } from '../../services/employee';
+import { DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-leave',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './leave.html',
   styleUrl: './leave.scss'
 })
-export class Leave {
+export class Leave implements OnInit{
   @ViewChild("newModal") newModal!: ElementRef;
   employeeService = inject(employeeService)
 
@@ -27,6 +30,10 @@ export class Leave {
 
   leaveList: any[]=[];
 
+  ngOnInit(): void {
+    this.loadLeaves();
+  }
+
   constructor() {
     debugger;
     const loggerData = localStorage.getItem("leaveUSer")
@@ -43,6 +50,18 @@ export class Leave {
         this.leaveList = result.data;
       }
     });
+  }
+
+  openModal() {
+    if(this.newModal) {
+      this.newModal.nativeElement.style.display="block"
+    }
+  }
+
+    closeModal() {
+    if(this.newModal) {
+      this.newModal.nativeElement.style.display="none"
+    }
   }
 
   onSave() {
