@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { employeeService } from '../../services/employee';
 import { APIResponseModel, EmployeeList } from '../../model/Employee.model';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-employee',
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './employee.html',
   styleUrl: './employee.scss'
 })
@@ -17,8 +19,11 @@ export class Employee implements OnInit{
 
   @ViewChild("newModal") newModal!: ElementRef;
 
+  roleList$:Observable<any[]> = new Observable<any[]>;
+
   ngOnInit(): void {
     this.getEmployees();
+    this.roleList$ = this.employeeService.getDptm();
   }
   
   getEmployees() {
@@ -30,5 +35,21 @@ export class Employee implements OnInit{
 
       }
     })
+  }
+
+  openModal() {
+    if(this.newModal) {
+      this.newModal.nativeElement.style.display="block"
+    }
+  }
+
+    closeModal() {
+    if(this.newModal) {
+      this.newModal.nativeElement.style.display="none"
+    }
+  }
+
+  onSubmit() {
+    
   }
 }

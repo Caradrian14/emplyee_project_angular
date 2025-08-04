@@ -20,7 +20,47 @@
 </div>
 
 <div id="addEmployeeModal" #newModal>
-    <button>
+    <button (click)="openModal()">
         Add Employee
     </button>
+
+    <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+  <div class="form-group">
+    <label for="employeeId">Employee ID</label>
+    <input type="number" id="employeeId" name="employeeId" [(ngModel)]="employee.employeeId" required>
+  </div>
+
+  <div class="form-group">
+    <label for="employeeName">Employee Name</label>
+    <input type="text" id="employeeName" name="employeeName" [(ngModel)]="employee.employeeName" required>
+  </div>
+
+  <div class="form-group">
+    <label for="deptId">Department ID</label>
+    <input type="number" id="deptId" name="deptId" [(ngModel)]="employee.deptId" required>
+  </div>
+
+  <div class="form-group">
+    <label for="deptName">Department Name</label>
+    <input type="text" id="deptName" name="deptName" [(ngModel)]="employee.deptName" required>
+  </div>
+
+  <div class="form-group">
+    <label for="contactNo">Contact Number</label>
+    <input type="text" id="contactNo" name="contactNo" [(ngModel)]="employee.contactNo" required>
+  </div>
+
+  <div class="form-group">
+    <label for="emailId">Email ID</label>
+    <input type="email" id="emailId" name="emailId" [(ngModel)]="employee.emailId" required>
+  </div>
+
+  <div class="form-group">
+    <label for="role">Role</label>
+    <input type="text" id="role" name="role" [(ngModel)]="employee.role" required>
+  </div>
+
+  <button type="submit" class="submit-button">Submit</button>
+</form>
+
 </div>
