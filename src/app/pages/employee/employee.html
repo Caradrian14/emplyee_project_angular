@@ -1,18 +1,26 @@
 <p>employee works!</p>
-@for (item of employeeList; track $index) {
-    <ul>
-        <li>{{ $index+1 }}</li>
-        <li>{{ item.employeeName }}</li>
-        <li>{{ item.emailId }}</li>
-        <li>{{ item.contactNo }}</li>
-        <li>{{ item.deptName }}</li>
-        <li>{{ item.emailId }}</li>
-    </ul>  
-    <button>
-        Edit
-    </button>
+<div>
+    @for (item of employeeList; track $index) {
+        <ul>
+            <li>{{ $index+1 }}</li>
+            <li>{{ item.employeeName }}</li>
+            <li>{{ item.emailId }}</li>
+            <li>{{ item.contactNo }}</li>
+            <li>{{ item.deptName }}</li>
+            <li>{{ item.emailId }}</li>
+        </ul>  
+        <button>
+            Edit
+        </button>
 
+        <button>
+            Delete
+        </button>
+    }
+</div>
+
+<div id="addEmployeeModal" #newModal>
     <button>
-        Delete
+        Add Employee
     </button>
-}
+</div>
