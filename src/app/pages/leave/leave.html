@@ -18,6 +18,10 @@
 </div>
 
 <div>
+    <button [ngClass]="currentTabName == 'myLeaves'?'active':''" (click)="changeTab('MyLaves')">
+        my leaves
+    </button>
+
     <ul>
         @for (item of leaveList; track $index) {
             <li>{{ $index +1}}</li>
@@ -32,6 +36,9 @@
             } @else if (item.isApproved == false) {
                 <span>reject</span>
             }
+
+            <button (click)="approveLeave(item.leaveId)">approved</button>
+            <button (click)="rejectLeave(item.leaveId)">reject</button>
         }
     </ul>
 </div>
