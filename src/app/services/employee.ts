@@ -21,4 +21,9 @@ export class employeeService {
     return this.http.get("https://freeapi.minipprojectideas.com/api/EmployeeLeave/GetDepartments").pipe(
       map((res:any) => res.data));
   }
+
+  getRoles(){
+    return this.http.get("https://freeapi.minipprojectideas.com/api/EmployeeLeave/GetAllRoles").pipe(
+      map((res:any) => res.data));
+  }
 }

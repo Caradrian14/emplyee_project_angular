@@ -20,10 +20,12 @@ export class Employee implements OnInit{
   @ViewChild("newModal") newModal!: ElementRef;
 
   roleList$:Observable<any[]> = new Observable<any[]>;
+  dptmList$:Observable<any[]> = new Observable<any[]>;
 
   ngOnInit(): void {
     this.getEmployees();
     this.roleList$ = this.employeeService.getDptm();
+    this.dptmList$ = this.employeeService.getRoles();
   }
   
   getEmployees() {
@@ -50,6 +52,6 @@ export class Employee implements OnInit{
   }
 
   onSubmit() {
-    
+
   }
 }
