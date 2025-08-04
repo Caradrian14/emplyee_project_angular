@@ -75,8 +75,8 @@
     <label for="emailId">Email ID</label>
     <input type="email" id="emailId" [(ngModel)]="employeeObj.emailId" name="emailId" required>
   </div>
-
-  <button type="submit" class="submit-button">Submit</button>
+  <button (click)="closeModal()">cancel</button>
+  <button type="submit" (click)="onSaveEmployee()" class="submit-button">Submit</button>
 </form>
 
 </div>

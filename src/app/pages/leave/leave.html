@@ -1,1 +1,16 @@
 <p>leave works!</p>
+<div #newModal>
+    <form action="" [formGroup]="leaveForm">
+        <select formControlName="leaveType" name="" id="">
+            <option value="">Select types</option>
+        </select>
+
+        <input type="date" formControlName="formDate">
+
+        <input type="date" formControlName="toDate">
+        
+        <input type="number" formControlName="noOfDays">
+
+        
+    </form>
+</div>

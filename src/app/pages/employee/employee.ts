@@ -63,6 +63,7 @@ export class Employee implements OnInit{
         if(res.result){
           this.getEmployees();
           alert("Employee created suscesfully")
+          this.closeModal()
         } else {
           alert(res.message)
         }
